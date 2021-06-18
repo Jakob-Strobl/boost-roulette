@@ -65,6 +65,7 @@ void BoostRoulette::onUnload() {
 void BoostRoulette::onEnabledChanged(std::string oldValue, CVarWrapper cvar) {
 	if (cvar.getBoolValue()) {
 		this->cvarManager->log("Boost Roulette enabled!");
+		this->gameWrapper->HookEventWithCaller<BoostPickupWrapper>("Function TAGame.VehiclePickup_Boost_TA.Pickup", std::bind(&BoostRoulette::onBoostPickup, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	}
 	else {
 		this->cvarManager->log("Boost Roulette disabled!");
@@ -77,4 +78,40 @@ void BoostRoulette::onBoostDemoChanceChanged(std::string oldValue, CVarWrapper c
 	
 	int chars = snprintf(msg, MSG_SIZE, "%s => %.2f", cvar.getCVarName().c_str(), cvar.getFloatValue());
 	this->cvarManager->log(msg);
+}
+
+void BoostRoulette::onBoostPickup(BoostPickupWrapper boost, void* params, std::string eventName) {
+	this->cvarManager->log("Boost:");
+	this->cvarManager->log(std::to_string((uintptr_t) &boost));
+
+	this->cvarManager->log("Boost type:");
+	this->cvarManager->log(std::to_string(boost.GetBoostType()));
+
+	/*
+	BoostType boostType = parseBoostType(boost->GetBoostType());
+
+	switch (boostType) {
+		case BoostType::BIG:
+			this->cvarManager->log("Big boost picked up!");
+			break;
+		case BoostType::PAD:
+			this->cvarManager->log("Boost pad picked up!");
+			break;
+		default:
+			this->cvarManager->log("Inavlid boost type");
+	}
+
+	*/
+}
+
+BoostType parseBoostType(unsigned char type)
+{
+	switch (type) {
+	case 1:
+		return BoostType::BIG;
+	case 2:
+		return BoostType::PAD;
+	default:
+		return BoostType::UNKNOWN;
+	}
 }
