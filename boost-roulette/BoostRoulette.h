@@ -4,10 +4,7 @@
 
 class BoostRoulette : public BakkesMod::Plugin::BakkesModPlugin {
 	private:
-		// TODO remove these Wrappers. Documentation says we should grab when needed, which I guess makes sense. 
-		std::shared_ptr<CVarWrapper> enabled;
-		std::shared_ptr<CVarWrapper> bigBoostDemoChance;
-		std::shared_ptr<CVarWrapper> padDemoChance;
+		std::shared_ptr<bool> enabled;
 
 	public:
 		virtual void onLoad();
@@ -18,6 +15,8 @@ class BoostRoulette : public BakkesMod::Plugin::BakkesModPlugin {
 		void onBoostDemoChanceChanged(std::string oldValue, CVarWrapper cvar);
 
 		void onBoostPickup(BoostPickupWrapper caller, void* params, std::string eventName);
+		bool rollBigBoost();
+		bool rollPadBoost();
 };
 
 enum class BoostType {
