@@ -4,7 +4,7 @@ Russian roulette, but with boost. Everyone loves RNG in their competitive games.
 
 ![Rocket League 2021 03 30 - 11 25 28 06 DVR](https://user-images.githubusercontent.com/8890971/113019258-65b90400-914f-11eb-9869-f81bb457c564.gif)
 
-## **[Go here to install with Bakkesmod.](https://bakkesplugins.com/plugins/view/207)**
+## **[Go here to install with Bakkesmod.](https://bakkesplugins.com/plugins/view/252)**
   
 ## What is this?
 
