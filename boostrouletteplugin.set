@@ -1,0 +1,12 @@
+Boost Roulette Plugin
+
+9|Enable Boost Roulette plugin
+1|Enabled|boost_roulette_is_enabled
+
+8|
+
+9|The probability a big boost demos the receiver 
+4|Big Boost Demo Probability|boost_roulette_big_boost_chance|0|1
+
+9|The probability a boost pad (small boost) demos the receiver
+4|Pad Demo Probability|boost_roulette_pad_boost_chance|0|1
